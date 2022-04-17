@@ -1,7 +1,11 @@
 import React from "react";
-import HomePage from "./Pages/HomePage";
 import { Routes, Route } from "react-router";
 import { createBrowserHistory } from "history";
+import HomePage from "./Pages/HomePage";
+import IncComponent from "./Components/IncComponent/IconComponent";
+import PopUpComponent from "./Components/PopUpComponent/PopUpComponent";
+import ToggleComponent from "./Components/ToggleComponent/ToggleComponent";
+import CartItemComponent from "./Components/CartItemComponent/CartItemComponent";
 
 import "./App.css";
 
@@ -14,9 +18,14 @@ class App extends React.Component {
         const history = createBrowserHistory();
 
         return (
-            <Routes>
-                <Route path="/" element={<HomePage history={history} inc={1} />} />
-            </Routes>
+            <>
+                <IncComponent />
+                <CartItemComponent />
+            </>
+            // <>
+            //     <PopUpComponent />
+            //     <ToggleComponent />
+            // </>
         );
     }
 }
