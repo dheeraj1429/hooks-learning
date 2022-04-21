@@ -5,8 +5,7 @@ import { selectCartItems } from "./CartItem.selector";
 import { createStructuredSelector } from "reselect";
 
 function CartItemComponent({ item, addToCartHandler }) {
-    console.log("cart component rerender");
-
+    console.log("cart item component render");
     return (
         <>
             <p>{item}</p>
@@ -15,16 +14,11 @@ function CartItemComponent({ item, addToCartHandler }) {
     );
 }
 
-const mapStateToProps = function () {
-    console.log("cart item render");
-
-    return createStructuredSelector({
-        item: selectCartItems,
-    });
-};
+const mapStateToProps = createStructuredSelector({
+    item: selectCartItems,
+});
 
 const mapDispatchToProps = (dispatch) => {
-    console.log("map dispatch to props");
     return {
         addToCartHandler: function (data) {
             dispatch(AddToCartItem(data));
@@ -33,3 +27,26 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartItemComponent);
+
+// import React from "react";
+// import { AddToCartItem } from "../../Redux/Action/action";
+// import { useSelector, useDispatch } from "react-redux";
+
+// function CartItemComponent() {
+//     console.log("cart component rerender");
+//     const selector = useSelector((state) => state.userStoreData.Items);
+//     const dispatch = useDispatch();
+
+//     const addToCartHandler = function () {
+//         dispatch(AddToCartItem({ data: "cart itmes" }));
+//     };
+
+//     return (
+//         <>
+//             <p>{selector.length}</p>
+//             <button onClick={addToCartHandler}>add to cart</button>
+//         </>
+//     );
+// }
+
+// export default CartItemComponent;

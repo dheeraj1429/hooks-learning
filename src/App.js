@@ -6,6 +6,8 @@ import IncComponent from "./Components/IncComponent/IconComponent";
 import PopUpComponent from "./Components/PopUpComponent/PopUpComponent";
 import ToggleComponent from "./Components/ToggleComponent/ToggleComponent";
 import CartItemComponent from "./Components/CartItemComponent/CartItemComponent";
+import NestedRouterComponent from "./Components/NestedRouter/NestedRouterComponent.jsx";
+import CollectionComponent from "./Components/CollectionComponent/CollectionComponent.jsx";
 
 import "./App.css";
 
@@ -18,10 +20,16 @@ class App extends React.Component {
         const history = createBrowserHistory();
 
         return (
-            <>
-                <IncComponent />
-                <CartItemComponent />
-            </>
+            // <>
+            //     <IncComponent />
+            //     <CartItemComponent />
+            // </>
+
+            <Routes>
+                <Route path="/new" element={<NestedRouterComponent />} />
+                <Route path="/new/collection" element={<CollectionComponent />} />
+            </Routes>
+
             // <>
             //     <PopUpComponent />
             //     <ToggleComponent />

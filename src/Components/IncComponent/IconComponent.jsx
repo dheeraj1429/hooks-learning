@@ -5,8 +5,7 @@ import { numSelector, secondNumberFun } from "./IncComponet.selectore";
 import { createStructuredSelector } from "reselect";
 
 const IncComponent = function ({ num, seoncdNum, updateData, updateSecondFn }) {
-    console.log("inc component rerender");
-
+    console.log("inc component render");
     const ChangeHandler = function () {
         updateData();
     };
@@ -34,13 +33,40 @@ const mapDispatchToProps = (dispatch) => ({
     },
 });
 
-const mapStateToProps = function () {
-    console.log("inc component render");
-
-    return createStructuredSelector({
-        num: numSelector,
-        seoncdNum: secondNumberFun,
-    });
-};
+const mapStateToProps = createStructuredSelector({
+    num: numSelector,
+    seoncdNum: secondNumberFun,
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(IncComponent);
+
+// import React from "react";
+// import { setInc, secondInc } from "../../Redux/Action/action";
+// import { useDispatch, useSelector } from "react-redux";
+
+// const IncComponent = function () {
+//     console.log("inc component rerender");
+
+//     const dispatch = useDispatch();
+//     const num = useSelector((state) => state.userStoreData.num);
+//     const secondNum = useSelector((state) => state.userStoreData.dataTwo);
+
+//     const ChangeHandler = function () {
+//         dispatch(setInc(1));
+//     };
+
+//     const ChangeHandlerSecond = function () {
+//         dispatch(secondInc(20));
+//     };
+
+//     return (
+//         <>
+//             <h1>{num}</h1>
+//             <h2>{secondNum}</h2>
+//             <button onClick={ChangeHandler}>inc</button>
+//             <button onClick={ChangeHandlerSecond}>change 2</button>
+//         </>
+//     );
+// };
+
+// export default IncComponent;
